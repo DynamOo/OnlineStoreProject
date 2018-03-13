@@ -1,7 +1,15 @@
 package com.swe.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 	
+	@Id   // keda b2ollo en el-attribute elly b3dak hyb2a el-PRIMARY KEY fe el-table
+    @GeneratedValue(strategy=GenerationType.AUTO)      // auto-increment
 	protected int id;
 	protected String firstName,
 		   lastName,
