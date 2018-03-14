@@ -1,5 +1,8 @@
 package com.swe.entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class StoreOwner extends User{
 
 	public StoreOwner() {

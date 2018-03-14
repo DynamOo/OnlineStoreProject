@@ -1,5 +1,8 @@
 package com.swe.entities;
 
+import javax.persistence.Entity;
+
+@Entity
 public class NormalUser extends User{
 
 	public NormalUser() {

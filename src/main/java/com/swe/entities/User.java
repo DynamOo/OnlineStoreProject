@@ -1,15 +1,20 @@
 package com.swe.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
+@Inheritance(strategy=InheritanceType.JOINED)	// da el-gdeed l7d dlw2ty 14/3
 @Entity
 public class User {
 	
 	@Id   // keda b2ollo en el-attribute elly b3dak hyb2a el-PRIMARY KEY fe el-table
     @GeneratedValue(strategy=GenerationType.AUTO)      // auto-increment
+	@Column(name="id", unique=true)    // 3shan a5lly el-ID unique w mynf3ash ytkrr (b3den in shaa Allah hnzbot kol el-columns fe el-mawdo3 da)
 	protected int id;
 	protected String firstName,
 		   lastName,
@@ -19,6 +24,9 @@ public class User {
 		   phoneNumber,
 		   type; 		// admin, normal, owner
 	protected int age;
+	
+	//TODO: hynf3na fe el-most2bal el-line da in shaa Allah
+	// @Column(name="some name :D", unique=false, nullable=false, insertable=true, updatable=true, length=45) // String length
 	
 	public User(int id, String firstName, String lastName, String email, String password, String address, String phoneNumber, String type, int age) {
 		super();

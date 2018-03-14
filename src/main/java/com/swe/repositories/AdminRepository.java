@@ -1,9 +1,10 @@
 package com.swe.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import javax.transaction.Transactional;
 
 import com.swe.entities.Administrator;
 
-public interface AdminRepository extends CrudRepository<Administrator, Integer> {
+@Transactional
+public interface AdminRepository extends UsersBaseRepository<Administrator> {
 
 }
