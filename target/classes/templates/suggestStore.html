@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Suggest Store</title>
+</head>
+<body>
+	<h2 align='center'> Suggest Store Page </h2> <!-- DO NOT REDIRECT TO ANY PAGE FROM HERE -->
+	<form method="post" th:action="@{/oHome/suggestStore}" th:object="${Store}">
+	    <p> Store Name: <input type="text" th:field="*{storeName}"/> </p>
+	    <p> Store Location: <input type="text" th:field="*{location}"/> </p>
+	    <p> Store Type: </p>
+		    <input type="radio" value="sports" th:field="*{storeType}" /> Sports<br></br>
+		    <input type="radio" value="entertainment" th:field="*{storeType}" /> Entertainment<br></br>
+		    <input type="radio" value="clothes" th:field="*{storeType}"/> Clothes<br></br>
+		    <input type="radio" value="technology" th:field="*{storeType}"/> Technology<br></br>
+		    <input type="radio" value="other" th:field="*{storeType}"/> Other<br></br>
+	    <p> <input type="submit" value="Suggest Store"/> </p>
+	</form>
+</body>
+</html>

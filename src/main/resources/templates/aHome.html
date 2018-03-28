@@ -6,6 +6,8 @@
 </head>
 <body>
 	<h2 align='center'> Admin Home </h2>
-	<p>Hello Administrator</p>
+	<p>Hello Administrator ${loggedInUser.firstName} </p>
+	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
+<!-- 	<p th:text="${session.user.firstName}" th:unless="${session == null}"> . </p> -->
 </body>
 </html>

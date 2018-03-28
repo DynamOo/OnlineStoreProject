@@ -6,13 +6,14 @@
 </head>
 <body>
 	<p>Login Page</p>
-	<form method="post" th:action="@{/login}" th:object="${user}">
-	    <p> Email: <input type="text" th:field="*{email}"/> </p>
-	    <p> Password: <input type="password" th:field="*{password}"/> </p>
-	    <p> Login AS: </p>
-		    <input type="radio" value="admin" th:field="*{type}" /> Administrator<br></br>
-		    <input type="radio" value="normal" th:field="*{type}" /> Normal User<br></br>
-		    <input type="radio" value="owner" th:field="*{type}"/> Store Owner<br></br>
+<!-- 	<form method="post" th:action="@{/login}" th:object="${user}"> -->
+	<form method="post" th:action="@{/login}">
+	    <p> Email: <input type="text" name="userMail"/> </p>
+	    <p> Password: <input type="password" name="userPassword"/> </p>
+<!-- 	    <p> Login AS: </p> 							For Debugging only for sure -->
+<!-- 		    <input type="radio" value="admin" th:field="*{type}" /> Administrator<br></br> -->
+<!-- 		    <input type="radio" value="normal" th:field="*{type}" /> Normal User<br></br> -->
+<!-- 		    <input type="radio" value="owner" th:field="*{type}"/> Store Owner<br></br> -->
 	    <p> <input type="submit" value="Login"/> </p>
 	</form>
 </body>

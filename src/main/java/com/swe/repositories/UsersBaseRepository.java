@@ -12,5 +12,7 @@ extends CrudRepository<T, Integer> {
 	
 	// All methods in this repository will be available in the UserRepository,
 	// in the AdminRepository, in the SotreOwnerRepository, and in the NormalUserRepository.
+	
+	User findByEmail(String userMail);
 
 }

@@ -13,17 +13,22 @@ import javax.persistence.InheritanceType;
 public class User {
 	
 	@Id   // keda b2ollo en el-attribute elly b3dak hyb2a el-PRIMARY KEY fe el-table
-    @GeneratedValue(strategy=GenerationType.AUTO)      // auto-increment
-	@Column(name="id", unique=true)    // 3shan a5lly el-ID unique w mynf3ash ytkrr (b3den in shaa Allah hnzbot kol el-columns fe el-mawdo3 da)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    //@GeneratedValue(strategy=GenerationType.AUTO)      // auto-increment
+	@Column(name="id", unique=true, nullable=false)    // 3shan a5lly el-ID unique w mynf3ash ytkrr (b3den in shaa Allah hnzbot kol el-columns fe el-mawdo3 da)
 	protected int id;
+	
 	protected String firstName,
 		   lastName,
-		   email,
 		   password,
 		   address,
 		   phoneNumber,
 		   type; 		// admin, normal, owner
-	protected int age;
+	
+	@Column(unique=true, nullable=false)
+	protected String email;
+	
+	protected int age, usableID;
 	
 	//TODO: hynf3na fe el-most2bal el-line da in shaa Allah
 	// @Column(name="some name :D", unique=false, nullable=false, insertable=true, updatable=true, length=45) // String length
@@ -39,6 +44,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.type = type;
 		this.age = age;
+		this.usableID = id;
 	}
 	
 	public User() {
@@ -52,6 +58,15 @@ public class User {
 		this.phoneNumber = "";
 		this.type = "";
 		this.age = 0;
+		this.usableID = 0;
+	}
+	
+	public int getUsableID() {
+		return usableID;
+	}
+
+	public void setUsableID(int usableID) {
+		this.usableID = usableID;
 	}
 
 	public int getId() {

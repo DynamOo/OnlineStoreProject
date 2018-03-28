@@ -6,6 +6,17 @@
 </head>
 <body>
 	<h2 align='center'> Store Owner Home </h2>
-	<p>Hello Store Owner</p>
+	<p align='center'>Hello Store Owner</p>
+	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
+<!-- 	<p th:text="${session.loggedInUser}" th:unless="${session == null}"> firstName. </p> -->
+	<p th:text="${session.loggedInUser}" > firstName. </p>
+
+	<table align="center">
+            <tr>
+                <td><a href="oHome/suggestStore">Suggest Store</a></td>
+                <td><a href="oHome/showAllStores">Show all Stores</a></td>
+                <td><a href="oHome/editStore">Edit Store</a></td>
+            </tr>
+        </table>
 </body>
 </html>
