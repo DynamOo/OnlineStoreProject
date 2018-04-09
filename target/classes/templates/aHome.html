@@ -9,5 +9,16 @@
 	<p>Hello Administrator ${loggedInUser.firstName} </p>
 	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
 <!-- 	<p th:text="${session.user.firstName}" th:unless="${session == null}"> . </p> -->
+	<p>The current user id is: </p>
+	<p th:text="${GlobalID}" > </p>
+
+	<table align="center">
+            <tr>
+                <td><a href="aHome/seeSuggestedStores">See Suggested Stores</a></td>
+                <td><a href="aHome/addBrand">Add New Brand</a></td>
+                <td><a href="aHome/seeSystemBrands">See System Brands</a></td>
+                <td><a href="aHome/seeSuggestedProducts">See Suggested Products</a></td>
+            </tr>
+    </table>
 </body>
 </html>

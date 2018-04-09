@@ -5,17 +5,25 @@
 <title>Suggest Store</title>
 </head>
 <body>
-	<h2 align='center'> Suggest Store Page </h2> <!-- DO NOT REDIRECT TO ANY PAGE FROM HERE -->
-	<form method="post" th:action="@{/oHome/suggestStore}" th:object="${Store}">
-	    <p> Store Name: <input type="text" th:field="*{storeName}"/> </p>
-	    <p> Store Location: <input type="text" th:field="*{location}"/> </p>
-	    <p> Store Type: </p>
-		    <input type="radio" value="sports" th:field="*{storeType}" /> Sports<br></br>
-		    <input type="radio" value="entertainment" th:field="*{storeType}" /> Entertainment<br></br>
-		    <input type="radio" value="clothes" th:field="*{storeType}"/> Clothes<br></br>
-		    <input type="radio" value="technology" th:field="*{storeType}"/> Technology<br></br>
-		    <input type="radio" value="other" th:field="*{storeType}"/> Other<br></br>
-	    <p> <input type="submit" value="Suggest Store"/> </p>
-	</form>
+	<div th:with="global_id=${GlobalID}">
+		<h2 align='center'> Suggest Store Page </h2> <!-- DO NOT REDIRECT TO ANY PAGE FROM HERE -->
+		<p>The current user id is: </p>
+		<p th:text="${GlobalID}" > </p>
+		<p th:text="${global_id}"> </p>
+		<form method="post" th:action="@{/oHome/suggestStore}" th:object="${Store}">
+	<!-- 		<input type="hidden" value="${GlobalID}" th:field="*{owner_fk}"/>     Made by Hibernate -->
+	<!-- 		<input type="hidden" th:value="${GlobalID}" th:field="*{ownerID}" />     Made by me -->
+		    <p> Store Name: <input type="text" th:field="*{storeName}"/> </p>
+		    <p> Store Location: <input type="text" th:field="*{location}"/> </p>
+		    <p> Store Type: </p>
+			    <input type="radio" value="sports" th:field="*{storeType}" /> Sports<br></br>
+			    <input type="radio" value="entertainment" th:field="*{storeType}" /> Entertainment<br></br>
+			    <input type="radio" value="clothes" th:field="*{storeType}"/> Clothes<br></br>
+			    <input type="radio" value="technology" th:field="*{storeType}"/> Technology<br></br>
+			    <input type="radio" value="other" th:field="*{storeType}"/> Other<br></br>
+			<p> <input type="radio" th:value="${global_id}" th:field="*{ownerID}" /> I agree to terms and conditions... </p>
+		    <p> <input type="submit" value="Suggest Store"/> </p>
+		</form>
+	</div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Your Stores</title>
+</head>
+<body>
+<!-- 	<div th:with="global_id=${GlobalID}"> -->
+		<table border='1' align='center' width='60%'>
+	          <tr>
+		          <td>ID</td>
+		          <td>Store Name</td>
+		          <td>Store Type</td>
+		          <td>Confirmed?</td>
+		          <td>Your ID</td>
+	          </tr>
+	          <tr th:each="store : ${myStores}">    <!-- for each loop 3adya 5als bt-loop 3la "myStores" elly mktoba hnak fe el-model  -->
+	          								
+	       	   	  <td th:text="${store.storeID}"></td>
+	       	   	  <td th:text="${store.storeName}"></td>
+	       	   	  <td th:text="${store.storeType}"></td>
+	       	   	  <td th:text="${store.confirmed}"></td>
+	       	   	  <td th:text="${store.ownerID}"></td>
+	       	   	  
+	       	   	  <!-- law kan 3ndy attribute array of products msln w 3aiz atb3o-->
+	       	   	  <!-- <td> <p th:each="product : ${store.products}"> w ashof htkb a gwa </p></td>  -->
+	       	  </tr>
+	    </table>
+<!--     </div> -->
+</body>
+</html>

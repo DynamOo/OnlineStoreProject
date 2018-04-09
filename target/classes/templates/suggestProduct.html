@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Suggest Product</title>
+</head>
+<body>
+	<div th:with="global_id=${GlobalID}">
+		<h2 align='center'> Suggest Product Page </h2> <!-- DO NOT REDIRECT TO ANY PAGE FROM HERE -->
+		<p>The current user id is: </p>
+		<p th:text="${global_id}"> </p>
+	
+		<form method="post" th:action="@{/oHome/suggestProduct}" th:object="${Product}">
+		    <p> Product Name: <input type="text" th:field="*{productName}"/> </p>
+		    <p> Product Price: <input type="text" th:field="*{price}"/> </p>
+		    <p> Product Quantity: <input type="text" th:field="*{quantity}"/> </p>
+		    <p> Product Type: </p>
+			    <input type="radio" value="normal" th:field="*{productType}" /> Normal<br></br>
+			    <input type="radio" value="online" th:field="*{productType}" /> Online<br></br>
+			<p> Product Category: </p>
+				<input type="radio" value="food" th:field="*{category}"/> Food<br></br>
+			    <input type="radio" value="clothes" th:field="*{category}"/> Clothes<br></br>
+			    <input type="radio" value="technology" th:field="*{category}"/> Technology<br></br>
+			    <input type="radio" value="other" th:field="*{category}"/> Other<br></br>
+			    
+			<!-- Auto-generated options list from a given list -->
+			<p> Store: </p> 
+			<select th:field="*{storeID}">
+<!-- 				<option th:value="0" th:text="Select Store"></option> -->
+            	<option th:each="store : ${systemStoresList}" th:value="${store.storeID}" th:text="${store.storeName}">Wireframe</option>
+            </select>
+            
+            <!-- Auto-generated options list from a given list -->
+			<p> Brand: </p> 
+			<select th:field="*{brandID}">
+<!-- 				<option th:value="0" th:text="Select Store"></option> -->
+            	<option th:each="brand : ${systemBrandsList}" th:value="${brand.brandID}" th:text="${brand.brandName}">test</option>
+            </select>
+            
+<!-- 			<p> Brand(WHOLE OBJECT): </p>  -->
+<!-- 			<select th:field="*{productBrand}"> -->
+<!-- <!-- 			<select th:field="*{systemBrandsList[__${brandStat.index}__].name}"> --> -->
+<!--             	<option th:each="brand : ${systemBrandsList}" th:value="${brand}" th:text="${brand.brandName}">test2</option> -->
+<!--             </select> -->
+            
+			<p> <input type="radio" th:value="${global_id}" th:field="*{ownerID}" /> I agree to terms and conditions... </p>
+		    <p> <input type="submit" value="Suggest Product"/> </p>
+		</form>
+	</div>
+</body>
+</html>

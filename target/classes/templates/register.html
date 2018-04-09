@@ -5,7 +5,7 @@
 <title>Register</title>
 </head>
 <body>
-	<h2 align='center'> Register Page </h2> <!-- DO NOT REDIRECT TO ANY PAGE FROM HERE -->
+	<h2 align='center'> Register Page </h2> <!-- Tip: DO NOT REDIRECT TO ANY PAGE FROM HERE -->
 	<form method="post" th:action="@{/register}" th:object="${user}">
 	    <p> First Name: <input type="text" th:field="*{firstName}"/> </p>
 	    <p> Second Name: <input type="text" th:field="*{lastName}"/> </p>
@@ -15,16 +15,9 @@
 	    <p> Address: <input type="text" th:field="*{address}"/> </p>
 	    <p> Phone Number: <input type="text" th:field="*{phoneNumber}"/> </p>
 	    <p> Register AS: </p>
-<!-- 	    <p> -->
 		    <input type="radio" value="admin" th:field="*{type}" /> Administrator<br></br>
 		    <input type="radio" value="normal" th:field="*{type}" /> Normal User<br></br>
 		    <input type="radio" value="owner" th:field="*{type}"/> Store Owner<br></br>
-<!-- 		    <div th:switch="${type}">  -->
-<!-- 			  <p th:case="'admin'">User is an administrator</p> -->
-<!-- 			  <p th:case="'owner'">User is a store owner</p> -->
-<!-- 			  <p th:case="'normal'">User is a normal user</p>  -->
-<!-- 			</div> -->
-<!-- 		</p> -->
 	    <p> <input type="submit" value="Register"/> </p>
 	</form>
 </body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Product Details</title>
+</head>
+<body>
+	<h2 align="center">Product Details</h2>
+	<p>The current user id is: </p>
+	<p th:text="${userID}"></p>
+	<p>The current product id is:</p>
+	<p th:text="${currentProduct.productID}"></p>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Name</td>
+			<td>Category</td>
+			<td>Quantity</td>
+			<td>Price</td>
+			<td>Brand</td>
+			<td>Store</td>
+			<td>Owner</td>
+		</tr>
+		<tr>
+			<td th:text="${currentProduct.productName}"></td>
+			<td th:text="${currentProduct.category}"></td>
+			<td th:text="${currentProduct.quantity}"></td>
+			<td th:text="${currentProduct.price}"></td>
+			<td th:text="${brandName}"></td>
+			<td th:text="${storeName}"></td>
+			<td th:text="${ownerName}"></td>
+		</tr>
+	</table>
+
+	<form method="get" th:action="@{/nHome/showTheBill/{userId}/{productId}/(productId=${currentProduct.productID}, userId=${userID})}">
+	    <p>	Enter Quantity: <input type="text" name="desiredQuantity"/> </p>
+	    <p> Enter Shipping Address: <input type="text" name="desiredAddress"/> </p>
+<!-- 	    <input type="hidden" name="userId" value="${userID}"/> -->
+<!-- 	    <input type="hidden" name="productId" value="${currentProduct.productID}"/> -->
+	    <p> <input type="submit" value="Buy Now"/> </p>
+	</form>
+	
+</body>
+</html>

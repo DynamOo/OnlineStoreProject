@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Suggested Products</title>
+</head>
+<body>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product ID</td>
+			<td>Product Name</td>
+			<td>Product Category</td>
+			<td>Brand ID</td>
+			<td>Owner ID</td>
+			<td>Store ID</td>
+			<td>Confirmed</td>
+			<td>Accept</td>
+		</tr>
+		<tr th:each="product : ${suggestedProducts}">
+			<td th:text="${product.productID}"></td>
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.brandID}"></td>
+			<td th:text="${product.ownerID}"></td>
+			<td th:text="${product.storeID}"></td>
+			<td th:text="${product.confirmed}"></td>
+			<td><a href='acceptProduct' th:href="@{/acceptProduct/{productId}/(productId=${product.productID})}">Accept</a></td>														
+		</tr>
+	</table>
+</body>
+</html>

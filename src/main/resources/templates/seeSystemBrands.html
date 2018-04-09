@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>System Brands</title>
+</head>
+<body>
+	<h2>System Brands</h2>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Brand ID</td>
+			<td>Brand Name</td>
+			<td>Brand Category</td>
+		</tr>
+		<tr th:each="brand : ${systemBrands}">
+			<td th:text="${brand.brandID}"></td>
+			<td th:text="${brand.brandName}"></td>
+			<td th:text="${brand.brandCategory}"></td>
+		</tr>
+	</table>
+</body>
+</html>

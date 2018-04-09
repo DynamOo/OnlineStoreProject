@@ -17,12 +17,17 @@ public class Product {
 	private String productName,
 		   category,
 		   brandName,
-		   productType;
+		   productType; // normal or online
 	
-	private int price, quantity, numOfViews;
-
+	private int price, quantity, numOfViews, ownerID, brandID, storeID;
+	private boolean confirmed;
+	
+	private int numberOfTimesSold;
+  
+	private Brand productBrand;   // Test
+	
 	public Product(int productID, String productName, String category, String brandName, String productType, int price,
-			int quantity) {
+			int quantity, int ownerID, int brandID, int storeID, Brand productBrand) {
 		super();
 		this.productID = productID;
 		this.productName = productName;
@@ -32,6 +37,12 @@ public class Product {
 		this.price = price;
 		this.quantity = quantity;
 		this.numOfViews = 0;
+		this.ownerID = ownerID;
+		this.brandID = brandID;
+		this.storeID = storeID;
+		this.confirmed = false;
+		this.productBrand = productBrand;
+		this.numberOfTimesSold = 0;
 	}
 	
 	public Product() {
@@ -44,6 +55,12 @@ public class Product {
 		this.price = 0;
 		this.quantity = 0;
 		this.numOfViews = 0;
+		this.ownerID = 0;
+		this.brandID = 0;
+		this.storeID = 0;
+		this.confirmed = false;
+		this.productBrand = null;
+		this.numberOfTimesSold = 0;
 	}
 
 	public int getProductID() {
@@ -108,6 +125,54 @@ public class Product {
 
 	public void setNumOfViews(int numOfViews) {
 		this.numOfViews = numOfViews;
+	}
+
+	public int getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerID(int ownerID) {
+		this.ownerID = ownerID;
+	}
+
+	public int getBrandID() {
+		return brandID;
+	}
+
+	public void setBrandID(int brandID) {
+		this.brandID = brandID;
+	}
+
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
+	}
+
+	public int getStoreID() {
+		return storeID;
+	}
+
+	public void setStoreID(int storeID) {
+		this.storeID = storeID;
+	}
+
+	public Brand getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(Brand productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public int getNumberOfTimesSold() {
+		return numberOfTimesSold;
+	}
+
+	public void setNumberOfTimesSold(int numberOfTimesSold) {
+		this.numberOfTimesSold = numberOfTimesSold;
 	}
 	
 }

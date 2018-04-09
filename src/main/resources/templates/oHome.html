@@ -9,14 +9,16 @@
 	<p align='center'>Hello Store Owner</p>
 	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
 <!-- 	<p th:text="${session.loggedInUser}" th:unless="${session == null}"> firstName. </p> -->
-	<p th:text="${session.loggedInUser}" > firstName. </p>
+<!-- 	<p th:text="${session.loggedInUser}" > firstName. </p> -->
+	<p>The current user id is: </p>
+	<p th:text="${GlobalID}" > </p>
 
 	<table align="center">
             <tr>
                 <td><a href="oHome/suggestStore">Suggest Store</a></td>
-                <td><a href="oHome/showAllStores">Show all Stores</a></td>
-                <td><a href="oHome/editStore">Edit Store</a></td>
+                <td><a href="oHome/showMyStores">Show my Stores</a></td>
+                <td><a href="oHome/suggestProduct">Suggest Product</a></td>
             </tr>
-        </table>
+    </table>
 </body>
 </html>

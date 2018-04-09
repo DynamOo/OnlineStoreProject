@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>System Products</title>
+</head>
+<body>
+	<h2>System Products</h2>
+	<p>The current user id is:</p>
+	<p th:text="${GlobalID}"></p>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product Name</td>
+			<td>Product Category</td>
+			<td>Available Quantity</td>
+			<td>Product Price</td>
+			<td>Brand</td>
+			<td>Show Details</td>
+		</tr>
+		<tr th:each="product : ${systemProducts}">
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.quantity}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.brandID}"></td>
+			<td><a href='showProductDetails' th:href="@{/showProductDetails/{user_id}/{productId}/(productId=${product.productID}, user_id=${GlobalID})}">Show Details</a></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Add New Brand</title>
+</head>
+<body>
+	<form method="post" th:action="@{/aHome/addBrand}" th:object="${Brand}">
+	    <p> Brand Name: <input type="text" th:field="*{brandName}"/> </p>
+	   	<p> Store Type: </p>
+			<input type="radio" value="sports" th:field="*{brandCategory}" /> Sports<br></br>
+		    <input type="radio" value="entertainment" th:field="*{brandCategory}" /> Entertainment<br></br>
+		    <input type="radio" value="clothes" th:field="*{brandCategory}"/> Clothes<br></br>
+		    <input type="radio" value="technology" th:field="*{brandCategory}"/> Technology<br></br>
+		    <input type="radio" value="other" th:field="*{brandCategory}"/> Other<br></br>
+<!-- 		<p> <input type="radio" th:value="${global_id}" th:field="*{ownerID}" /> I agree to terms and conditions... </p> -->
+		<p> <input type="submit" value="Add Brand"/> </p>
+	</form>
+</body>
+</html>

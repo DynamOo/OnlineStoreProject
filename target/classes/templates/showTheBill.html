@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Product Details</title>
+</head>
+<body>
+	<h2 align="center">Order Details</h2>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product Name</td>
+			<td>Desired Quantity</td>
+			<td>Final Price</td>
+			<td>Shipping Address</td>
+		</tr>
+		<tr>
+			<td th:text="${currentProduct.productName}"></td>
+			<td th:text="${desiredAmount}"></td>
+			<td th:text="${sellingPrice}"></td>
+			<td th:text="${desiredAddress}"></td>
+		</tr>
+	</table>
+	<div align="center">
+	<a href='confirmTransaction' th:href="@{/nHome/confirmTransaction/{userId}/{productId}/{soldQuantity}/(userId=${userId}, productId=${currentProduct.productID}, soldQuantity=${desiredAmount})}">Confirm</a><p></p>
+	<a href='cancelTransaction' th:href="@{/nHome}">Cancel</a>
+	</div>
+</body>
+</html>

@@ -5,8 +5,18 @@
 <title>Home</title>
 </head>
 <body>
-	<h2 align='center'> Normal User Home </h2>
+<!-- 	<div th:with="global_id=${GlobalID}"> -->
+	<h2 align='center'>Normal User Home</h2>
 	<p>Hello Normal User</p>
-	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
+	<a href="logout" style="float: right; margin-top: -30px">Logout</a>
+
+	<p>The current user id is:</p>
+	<p th:text="${GlobalID}"></p>
+	<table align="center">
+		<tr>
+			<td><a href='seeSystemProducts' th:href="@{/nHome/seeSystemProducts/{user_id}/(user_id=${GlobalID})}">See System Products</a></td>
+		</tr>
+	</table>
+	<!--     </div> -->
 </body>
 </html>

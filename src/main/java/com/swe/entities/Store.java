@@ -19,37 +19,38 @@ public class Store {
 	@Column(name="storeID", unique=true)
 	private int storeID;
 	
-	//private int ownerID;
+	private int ownerID;
 	private String storeName, location, storeType;
 	private boolean confirmed;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name="OWNER_ID_TEST", nullable=false)
-	@JoinColumn(name="owner_id", nullable=false)
-    private StoreOwner storeOwner;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="owner_fk", nullable=false)
+//    private StoreOwner storeOwner;
 
 	private ArrayList<Product> products;
+	private ArrayList<Integer> keysOfProducts; // To save space :D
 
 	public Store(int ownerID, int storeID, String storeName, String location, String storeType) {
 		super();
-		//this.ownerID = ownerID;
+		this.ownerID = ownerID;
 		this.storeID = storeID;
 		this.storeName = storeName;
 		this.location = location;
 		this.storeType = storeType;
 		this.products = new ArrayList<Product>();
+		this.keysOfProducts = new ArrayList<Integer>();
 		this.confirmed = false;
-		//this.storeOwner = new StoreOwner();
 	}
 	
 	public Store() {
 		super();
-		//this.ownerID = 0;
+		this.ownerID = 0;
 		this.storeID = 0;
 		this.storeName = "";
 		this.location = "";
 		this.storeType = "";
 		this.products = new ArrayList<Product>();
+		this.keysOfProducts = new ArrayList<Integer>();
 		this.confirmed = false;
 	}
 
@@ -85,13 +86,13 @@ public class Store {
 		this.storeType = storeType;
 	}
 	
-	public StoreOwner getStoreOwner() {
-		return storeOwner;
-	}
-
-	public void setStoreOwner(StoreOwner storeOwner) {
-		this.storeOwner = storeOwner;
-	}
+//	public StoreOwner getStoreOwner() {
+//		return storeOwner;
+//	}
+//
+//	public void setStoreOwner(StoreOwner storeOwner) {
+//		this.storeOwner = storeOwner;
+//	}
 
 	public ArrayList<Product> getProducts() {
 		return products;
@@ -99,6 +100,14 @@ public class Store {
 
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
+	}
+	
+	public ArrayList<Integer> getKeysOfProducts() {
+		return keysOfProducts;
+	}
+
+	public void setKeysOfProducts(ArrayList<Integer> keysOfProducts) {
+		this.keysOfProducts = keysOfProducts;
 	}
 
 	public boolean isConfirmed() {
@@ -109,12 +118,12 @@ public class Store {
 		this.confirmed = confirmed;
 	}
 
-//	public int getOwnerID() {
-//		return ownerID;
-//	}
-//
-//	public void setOwnerID(int ownerID) {
-//		this.ownerID = ownerID;
-//	}
+	public int getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerID(int ownerID) {
+		this.ownerID = ownerID;
+	}
 	
 }

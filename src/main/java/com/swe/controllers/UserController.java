@@ -56,7 +56,6 @@ public class UserController {
     	System.out.println(user.getId());
     	System.out.println(user.getUsableID());
     	System.out.println(user.getType());
-//    	String userType = user.getType();
     	
     	int id = user.getId();
     	int urlID = user.getId();
@@ -74,7 +73,8 @@ public class UserController {
 		System.out.println("userID = " + userID);
     	//userRepo.save(user);    // keda 7allet moshklt enno bydeef 2 duplicate records le kol user bygeely fe table User
     	
-    	model.addAttribute("user", new User());
+		// Kont 7atetha 3l-fady ... ana bgrb 7agat bs 3shan ab2a fahem s7 w a3ml add store s7 -------------------------------
+    	//model.addAttribute("user", new User());
     	
     	String redirectPage = "redirect:/nHome";    // Default is Normal User (exceptions will be handled soon isa)
     	
