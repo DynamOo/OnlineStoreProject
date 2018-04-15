@@ -30,7 +30,6 @@
             	<option th:each="store : ${systemStoresList}" th:value="${store.storeID}" th:text="${store.storeName}">Wireframe</option>
             </select>
             
-            <!-- Auto-generated options list from a given list -->
 			<p> Brand: </p> 
 			<select th:field="*{brandID}">
 <!-- 				<option th:value="0" th:text="Select Store"></option> -->
@@ -39,7 +38,7 @@
             
 <!-- 			<p> Brand(WHOLE OBJECT): </p>  -->
 <!-- 			<select th:field="*{productBrand}"> -->
-<!-- <!-- 			<select th:field="*{systemBrandsList[__${brandStat.index}__].name}"> --> -->
+<!--  			<select th:field="*{systemBrandsList[__${brandStat.index}__].name}"> -->
 <!--             	<option th:each="brand : ${systemBrandsList}" th:value="${brand}" th:text="${brand.brandName}">test2</option> -->
 <!--             </select> -->
             

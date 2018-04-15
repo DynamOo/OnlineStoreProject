@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Your Products</title>
+</head>
+<body>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product ID</td>
+			<td>Product Name</td>
+			<td>Store Type</td>
+			<td>Confirmed</td>
+			<td>See Statistics</td>
+		</tr>
+		<tr th:each="product : ${ownerProducts}">
+
+			<td th:text="${store.storeID}"></td>
+			<td th:text="${store.storeName}"></td>
+			<td th:text="${store.storeType}"></td>
+			<td th:text="${store.confirmed}"></td>
+			<td><a href='seeStatistics'
+				th:href="@{/oHome/seeStatistics/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">See
+					Statistics</a></td>
+		</tr>
+	</table>
+</body>
+</html>
