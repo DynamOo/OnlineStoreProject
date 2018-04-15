@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -47,8 +48,8 @@ public class StoreOwnerController {
 		return "redirect:/oHome";
 	}
 	
-	@GetMapping("/oHome/suggestProduct")
-	public String getProductSuggestionForm(Model model) {
+	@GetMapping("/oHome/suggestProduct/{user_id}")
+	public String getProductSuggestionForm(@PathVariable int user_id, Model model) {
 		model.addAttribute("Product", new Product());
 		
 		// ------------------ NEWLY ADDED 1 ------------------
@@ -56,7 +57,7 @@ public class StoreOwnerController {
     	List<Store> systemStoresList = new ArrayList<Store>();
     	
     	for (Store store : storesIterable) {
-    		if (store.isConfirmed() == true)
+    		if (store.isConfirmed() == true && store.getOwnerID() == user_id)
     			systemStoresList.add(store);
     	}
     	model.addAttribute("systemStoresList", systemStoresList);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Store Statistics</title>
+</head>
+<body>
+	<h2>Store Statistics</h2>
+	
+	<h5>Your store's products have been viewed: </h5>
+	<p th:text="${numOfViews} + ' ' + times"></p>
+	
+	<h5>Your store's products have been bought: </h5>
+	<p th:text="${numOfPurchases} + ' ' +  times"></p>
+	
+	<h5>The current sold out products are: </h5>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product Name</td>
+			<td>Number Of Views</td>
+			<td>Number Of Purchases</td>
+		</tr>
+		<tr th:each="product : ${soldOutProducts}">
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.numOfViews}"></td>
+			<td th:text="${product.numberOfTimesSold}"></td>
+		</tr>
+	</table>
+	
+	<h5>The available products: </h5>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product Name</td>
+			<td>Quantity</td>
+			<td>Number Of Views</td>
+			<td>Number Of Purchases</td>
+		</tr>
+		<tr th:each="product : ${availableProducts}">
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.quantity}"></td>
+			<td th:text="${product.numOfViews}"></td>
+			<td th:text="${product.numberOfTimesSold}"></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -143,6 +143,8 @@ public class UserController {
     		redirectPage = "redirect:/oHome";
     	else if (user.getType().equals("normal"))
     		redirectPage = "redirect:/nHome";
+    	else if (user.getType().equals("collaborator"))
+    		redirectPage = "redirect:/cHome";
     	
     	return redirectPage;
     }
@@ -217,20 +219,92 @@ public class UserController {
 	
 	@GetMapping("/nHome")
 	public String getNormalUserHome(Model model) {
-//		model.addAttribute("student", new Student());
 		return "nHome";          					
     }
 	
 	@GetMapping("/oHome")
 	public String getStoreOwnerHome(Model model) {
-//		model.addAttribute("student", new Student());
 		return "oHome";          					
     }
 	
 	@GetMapping("/aHome")
-	public String getAdminHome(Model model) {
-//		model.addAttribute("student", new Student());
+	public String getAdminHome(Model model) {   // mtl3sh lazm ab3at el-model da 3la fekra
 		return "aHome";          					
     }
 	
+	@GetMapping("/cHome")
+	public String getCollaboratorHome() {
+		return "cHome";          					
+    }
+	
+	// NEWELY ADDED
+	
+//	@PostMapping("/storeoweneraddpanel")
+//	public String addpanle(Model model, @ModelAttribute panel panel) {
+//	    	int panelid = panel.getpanelid();
+//	    	String panelstorename = panel.getpanelstorename();
+//	    	int numberofproductsold = panel.getnumberofproductsold();
+//	    	int productid = panel.getproductid();
+//	    	String productname = panel.getproductname();
+//	    	String panelstoreaddress = panel.getpanelstoreaddress();
+//			String phoneNumber = panel.getPhoneNumber();
+//			String type = panel.getType(); 
+//	    	
+//			int urlID = panelid;
+//	    	//userRepo.save(user);    // keda 7allet moshklt enno bydeef 2 duplicate records le kol user bygeely fe table User
+//	    	
+//	model.addAttribute("panel", new panel());
+//	String redirectPage = "redirect:/nHome";    // Default is Normal User (exceptions will be handled soon isa)
+//	Administrator admin = new Administrator(id, firstName, lastName, email, password, address, phoneNumber, type, age);
+//	panel pan = new panel( panelid, panelstorename, numberofproductsold, productid,  productname,  panelstoreaddress)
+//	//int urlID = id;
+//	panelRepository.save(pan);    // save returns the identifier, not the entity.
+//	redirectPage = "redirect:/aHome"+"?id="+urlID; // 5ally shakl el-url .../aHome ... wna 3aml ta7t function awl mbtshof el-shakl da btfta7 aHome.html 3la tol ;)
+//	return redirectPage;         // da el-view elly hyzhar b3d ml-user ydos register (bs el-url msh hyt3'ayar w hyb2a "/welcome" aked y3ny :D
+//	        // b3ml redirect 3la tol mn 3'er m-handlha fe html page
+//	}
+//
+//	@PostMapping("/storeowenerremovepanel")
+//	public String removepanle(Model model, @ModelAttribute panel panel) {
+//	    	int panelid = panel.getpanelid();
+//	    	String panelstorename = panel.getpanelstorename();
+//	    	int numberofproductsold = panel.getnumberofproductsold();
+//	    	int productid = panel.getproductid();
+//	    	String productname = panel.getproductname();
+//	    	String panelstoreaddress = panel.getpanelstoreaddress();
+//			String phoneNumber = panel.getPhoneNumber();
+//			String type = panel.getType(); 
+//	    	
+//			int urlID = panelid;
+//	    	//userRepo.save(user);    // keda 7allet moshklt enno bydeef 2 duplicate records le kol user bygeely fe table User
+//	    	
+//	model.addAttribute("panel", new panel());
+//	String redirectPage = "redirect:/nHome";    // Default is Normal User (exceptions will be handled soon isa)
+//	Administrator admin = new Administrator(id, firstName, lastName, email, password, address, phoneNumber, type, age);
+//	panel pan = new panel( panelid, panelstorename, numberofproductsold, productid,  productname,  panelstoreaddress);
+//	//int urlID = id;
+//	panelRepository.remove(pan);    // save returns the identifier, not the entity.
+//	redirectPage = "redirect:/aHome"+"?id="+urlID; // 5ally shakl el-url .../aHome ... wna 3aml ta7t function awl mbtshof el-shakl da btfta7 aHome.html 3la tol ;)
+//	return redirectPage;         // da el-view elly hyzhar b3d ml-user ydos register (bs el-url msh hyt3'ayar w hyb2a "/welcome" aked y3ny :D
+//	        // b3ml redirect 3la tol mn 3'er m-handlha fe html page
+//	}
+//
+//	@PostMapping("/Statistics")
+//	public String Statisticss(Model model, @ModelAttribute Statistics  Statistics ) {
+//	    	int panelid = Statistics.getpanelid();
+//	    	int panelstorename = Statistics.getpanelstorename();
+//	    	String numberofproductsold = Statistics.getnumberofproductsold();
+//	    	String productid = Statistics.getproductid();
+//	    	model.addAttribute("Statistics", new Statistics());
+//	        String redirectPage = "redirect:/nHome";    // Default is Normal User (exceptions will be handled soon isa)
+//	        Administrator admin = new Administrator(id, firstName, lastName, email, password, address, phoneNumber, type, age);
+//	        Statistics Statisticss = new Statistics (Numberofusersexplorehisproducts , Numberofuserbuyhisproducts ,Themostorderedproducts ,Themostorderedbrands);
+//	        //int urlID = id;
+//			StatisticsRepository.save(Statisticss);    // save returns the identifier, not the entity.
+//			redirectPage = "redirect:/aHome"+"?id="+urlID; // 5ally shakl el-url .../aHome ... wna 3aml ta7t function awl mbtshof el-shakl da btfta7 aHome.html 3la tol ;)
+//	return redirectPage;         // da el-view elly hyzhar b3d ml-user ydos register (bs el-url msh hyt3'ayar w hyb2a "/welcome" aked y3ny :D
+//	        // b3ml redirect 3la tol mn 3'er m-handlha fe html page
+//	}
+//	
+//	// END
 }

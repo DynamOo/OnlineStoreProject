@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.swe.entities.Brand;
 import com.swe.entities.Product;
 import com.swe.entities.Store;
+import com.swe.entities.StoreOwner;
 import com.swe.repositories.BrandRepository;
 import com.swe.repositories.ProductRepository;
+import com.swe.repositories.StoreOwnerRepository;
 import com.swe.repositories.StoreRepository;
 
 @Controller
@@ -28,6 +30,9 @@ public class AdminController {
 	@Autowired
 	private ProductRepository productRepo;
 	
+	@Autowired
+	private StoreOwnerRepository ownerRepo;
+	
 //	@RequestMapping(value="/processForm",params="accept",method=RequestMethod.POST)	
 	@RequestMapping("/acceptStore/{storeId}")
 	public String acceptStore(@PathVariable int storeId){
@@ -36,6 +41,12 @@ public class AdminController {
 		System.out.println(store.getStoreName());         // For Debugging
 		store.setConfirmed(true);
 		storeRepo.save(store);
+		
+		int ownerID = store.getOwnerID();
+		StoreOwner owner = ownerRepo.findOne(ownerID);
+		owner.addStore(storeId);
+		ownerRepo.save(owner);                            // ;) ;) ^_^
+		
 		return "redirect:/aHome/seeSuggestedStores";
 	}
 	
@@ -59,6 +70,12 @@ public class AdminController {
 		System.out.println(product.getProductName());         // For Debugging
 		product.setConfirmed(true);
 		productRepo.save(product);
+		
+		int storeID = product.getStoreID();                   // Preserving Referential Integrity ;) <3
+		Store store = storeRepo.findOne(storeID);
+		store.addProductKey(productId);
+		storeRepo.save(store);  
+		
 		return "redirect:/aHome/seeSuggestedProducts";
 	}
 	

@@ -1,6 +1,7 @@
 package com.swe.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,12 +24,17 @@ public class Store {
 	private String storeName, location, storeType;
 	private boolean confirmed;
 	
+	// First Trial
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name="owner_fk", nullable=false)
 //    private StoreOwner storeOwner;
 
-	private ArrayList<Product> products;
-	private ArrayList<Integer> keysOfProducts; // To save space :D
+	// Second Trial
+//	private ArrayList<Product> products;
+//	private ArrayList<Integer> keysOfProducts; // To save space :D
+	
+	String productsKeys;
+	//int numOfUsersViewedStoreProducts, numOfUsersBoughtStoreProducts;
 
 	public Store(int ownerID, int storeID, String storeName, String location, String storeType) {
 		super();
@@ -37,9 +43,10 @@ public class Store {
 		this.storeName = storeName;
 		this.location = location;
 		this.storeType = storeType;
-		this.products = new ArrayList<Product>();
-		this.keysOfProducts = new ArrayList<Integer>();
+//		this.products = new ArrayList<Product>();
+//		this.keysOfProducts = new ArrayList<Integer>();
 		this.confirmed = false;
+		this.productsKeys = "";
 	}
 	
 	public Store() {
@@ -49,9 +56,10 @@ public class Store {
 		this.storeName = "";
 		this.location = "";
 		this.storeType = "";
-		this.products = new ArrayList<Product>();
-		this.keysOfProducts = new ArrayList<Integer>();
+//		this.products = new ArrayList<Product>();
+//		this.keysOfProducts = new ArrayList<Integer>();
 		this.confirmed = false;
+		this.productsKeys = "";
 	}
 
 	public int getStoreID() {
@@ -94,21 +102,21 @@ public class Store {
 //		this.storeOwner = storeOwner;
 //	}
 
-	public ArrayList<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(ArrayList<Product> products) {
-		this.products = products;
-	}
-	
-	public ArrayList<Integer> getKeysOfProducts() {
-		return keysOfProducts;
-	}
-
-	public void setKeysOfProducts(ArrayList<Integer> keysOfProducts) {
-		this.keysOfProducts = keysOfProducts;
-	}
+//	public ArrayList<Product> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(ArrayList<Product> products) {
+//		this.products = products;
+//	}
+//	
+//	public ArrayList<Integer> getKeysOfProducts() {
+//		return keysOfProducts;
+//	}
+//
+//	public void setKeysOfProducts(ArrayList<Integer> keysOfProducts) {
+//		this.keysOfProducts = keysOfProducts;
+//	}
 
 	public boolean isConfirmed() {
 		return confirmed;
@@ -126,4 +134,38 @@ public class Store {
 		this.ownerID = ownerID;
 	}
 	
+	public List<Integer> getProductsKeys()
+	{
+	    List<Integer> productsIDs = new ArrayList<Integer>();
+	    int singleProductID = 0;
+
+	    for(String productID : this.productsKeys.split(","))
+	    {
+	        try {
+	        	singleProductID = Integer.parseInt(productID);
+	        }
+	        // If the String contains other thing that digits and commas
+	        catch (NumberFormatException e) {
+	        }
+	        productsIDs.add(singleProductID);
+	    }
+
+	    return productsIDs;
+	}
+
+	public void setProductsKeys(List<Integer> productsIDs)     // Ex: [1, 2, 3, 4, 55, 66]
+	{
+	    String newProductsIDs = "";
+	    for(int productID : productsIDs)
+	    {
+	    	newProductsIDs += String.valueOf(productID)+",";
+	    }
+	    this.productsKeys = newProductsIDs;                   // Will be: 1,2,3,4,55,66,
+	}
+	
+	// Utility Function
+	public void addProductKey(int newproductID)
+	{
+		this.productsKeys += String.valueOf(newproductID)+",";
+	}
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Home</title>
+</head>
+<body>
+	<h2 align='center'> Collaborator Home </h2>
+	<p align='center'>Hello Collaborator</p>
+	<a href="logout" style="float:right;margin-top:-30px">Logout</a>
+	<p>The current user id is: </p>
+	<p th:text="${GlobalID}" > </p>
+
+	<table align="center">
+    	<tr>
+            <td><a href='showMyStores' th:href="@{/cHome/showMyStores/{user_id}/(user_id=${GlobalID})}">Show My Stores</a></td>
+            <td><a href='showMyProducts' th:href="@{/cHome/showMyProducts/{user_id}/(user_id=${GlobalID})}">Show My Products</a></td>
+            <td><a href='addProduct' th:href="@{/cHome/addProduct/{user_id}/(user_id=${GlobalID})}">Add Product</a></td>
+            <!-- h3aml addProduct hena k2nha suggestProduct -->
+        </tr>
+    </table>
+</body>
+</html>

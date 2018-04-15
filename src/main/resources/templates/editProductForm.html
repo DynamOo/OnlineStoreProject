@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Edit Product</title>
+</head>
+<body>
+	<h2 align="center">Edit Product</h2>
+
+	<form method="post" th:action="@{/nHome/saveProductAfterEdit/{userId}/{productId}/(productId=${currentProduct.productID}, userId=${currentProduct.ownerID})}">
+		<table border='1' align='center' width='60%'>
+			<tr>
+				<td>Name</td>
+				<td>Category</td>
+				<td>Quantity</td>
+				<td>Price</td>
+			</tr>
+			<tr>
+				<td> <input type="text" name="newName" th:value="${currentProduct.productName}"/> </td>
+				<td> <input type="text" name="newCategory" th:value="${currentProduct.category}"/> </td>
+				<td> <input type="text" name="newQuantity" th:value="${currentProduct.quantity}"/> </td>
+				<td> <input type="text" name="newPrice" th:value="${currentProduct.price}"/> </td>
+			</tr>
+		</table>
+	    <p align="center"> <input type="submit" value="Save New Product"/> </p>
+	</form>
+	
+</body>
+</html>

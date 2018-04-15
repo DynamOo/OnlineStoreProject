@@ -7,10 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.swe.entities.NormalUser;
@@ -146,7 +145,9 @@ public class ProductController {
 		NormalUser user = normalUserRepo.findOne(userId);
 		
 		int oldQuantity = product.getQuantity();
+		int oldNumbersSold = product.getNumberOfTimesSold();
 		product.setQuantity(oldQuantity - soldQuantity);
+		product.setNumberOfTimesSold(++oldNumbersSold);
 		user.setBoughtBefore(true);
 		
 		productRepo.save(product);
@@ -156,4 +157,50 @@ public class ProductController {
 		return "redirect:/nHome";
     }
 	
+	@GetMapping("/oHome/showMyProducts/{user_id}")
+    public String showProductsForSomeOwner(@PathVariable int user_id, Model model)
+	{
+    	List<Product> ownerProducts = productRepo.findByOwnerID(user_id); // a7sn mn bta3t m7md samir b-kteeeer ;) ^_^
+    	model.addAttribute("ownerProducts", ownerProducts);
+    	return "showMyProducts";
+	}
+	
+	@GetMapping("/oHome/editProduct/{user_id}/{productId}")
+	public String showEditProductForm(@PathVariable int productId, Model model)
+	{
+		Product currentProduct = productRepo.findOne(productId);
+		model.addAttribute("currentProduct", currentProduct);
+	    return "editProductForm";
+	}
+	
+	@PostMapping("/nHome/saveProductAfterEdit/{userId}/{productId}")
+	public String EditProduct(@PathVariable int userId, @PathVariable int productId, @RequestParam String newName,
+			@RequestParam String newCategory, @RequestParam int newQuantity, @RequestParam int newPrice)
+	{
+		Product currentProduct = productRepo.findOne(productId);
+		currentProduct.setProductName(newName);
+		currentProduct.setCategory(newCategory);
+		currentProduct.setQuantity(newQuantity);
+		currentProduct.setPrice(newPrice);
+		productRepo.save(currentProduct);
+		return "redirect:/oHome/showMyProducts/{userId}";
+	}
+	
+	@GetMapping("/oHome/deleteProduct/{user_id}/{productId}")
+	public String deleteProduct(@PathVariable int user_id, @PathVariable int productId, Model model)
+	{
+		Product currentProduct = productRepo.findOne(productId);
+		productRepo.delete(currentProduct); 						// Goodbye :(
+		return "redirect:/oHome/showMyProducts/{user_id}";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
