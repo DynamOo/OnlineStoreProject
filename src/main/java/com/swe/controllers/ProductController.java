@@ -147,7 +147,7 @@ public class ProductController {
 		int oldQuantity = product.getQuantity();
 		int oldNumbersSold = product.getNumberOfTimesSold();
 		product.setQuantity(oldQuantity - soldQuantity);
-		product.setNumberOfTimesSold(++oldNumbersSold);
+		product.setNumberOfTimesSold(oldNumbersSold + soldQuantity);
 		user.setBoughtBefore(true);
 		
 		productRepo.save(product);

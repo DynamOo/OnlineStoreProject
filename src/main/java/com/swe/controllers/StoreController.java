@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.swe.entities.Product;
 import com.swe.entities.Store;
+import com.swe.entities.StoreOwner;
 import com.swe.repositories.ProductRepository;
+import com.swe.repositories.StoreOwnerRepository;
 import com.swe.repositories.StoreRepository;
 
 @Controller
@@ -23,6 +25,9 @@ public class StoreController {
 	@Autowired
 	private ProductRepository productRepo;
 	
+	@Autowired
+	private StoreOwnerRepository ownerRepo;
+	
 	@GetMapping("/oHome/showMyStores/{user_id}")
     public String showStoresForSomeOwner(@PathVariable int user_id, Model model) {
     	
@@ -32,6 +37,26 @@ public class StoreController {
     	// w b3den hmla b2a el-stores list FROM stores iterable
     	for (Store store : storesIterable) {
     		if (store.getOwnerID() == user_id)	
+    			storesList.add(store);
+    	}
+    	
+    	model.addAttribute("myStores", storesList);
+    	return "showMyStores";
+    	
+    }
+	
+	// TODO: Testing show my stores, b-shart en afltar mn el-stores elly 3nd el-owner da
+	@GetMapping("/oHome/showMyStoresTEST/{user_id}")
+    public String showStoresForSomeOwnerTEST(@PathVariable int user_id, Model model) {
+    	
+		StoreOwner currentOwner = ownerRepo.findOne(user_id);
+		List<Integer> ownerStores = currentOwner.getStores();
+    	Iterable<Store> storesIterable = storeRepo.findAll();
+    	List<Store> storesList = new ArrayList<Store>();
+    	
+    	// w b3den hmla b2a el-stores list FROM stores iterable
+    	for (Store store : storesIterable) {
+    		if (ownerStores.contains(store.getStoreID()))	
     			storesList.add(store);
     	}
     	

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Collaborator Products</title>
+</head>
+<body>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Product Name</td>
+			<td>Product Category</td>
+			<td>Available Quantity</td>
+			<td>Product Price</td>
+			<td>Brand ID</td>
+			<td>Store ID</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+		<tr th:each="product : ${collaboratorProductsList}">
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.category}"></td>
+			<td th:text="${product.quantity}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.brandID}"></td>
+			<td th:text="${product.storeID}"></td>
+			<td><a href='editProduct' th:href="@{/cHome/actionEditProduct/{user_id}/{productId}/(productId=${product.productID}, user_id=${user_id})}">Edit</a></td>
+			<td><a href='deleteProduct' th:href="@{/cHome/actionDeleteProduct/{user_id}/{productId}/(productId=${product.productID}, user_id=${user_id})}">Delete</a></td>
+		</tr>
+	</table>
+</body>
+</html>

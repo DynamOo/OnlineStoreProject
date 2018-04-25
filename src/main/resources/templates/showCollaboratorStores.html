@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Collaborator Stores</title>
+</head>
+<body>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Store ID</td>
+			<td>Store Name</td>
+			<td>Store Type</td>
+			<td>See Statistics</td>
+			<td>Add Product</td>
+		</tr>
+		<tr th:each="store : ${collaboratorStores}">
+			<td th:text="${store.storeID}"></td>
+			<td th:text="${store.storeName}"></td>
+			<td th:text="${store.storeType}"></td>
+			<td><a href='seeStatistics'
+				th:href="@{/oHome/seeStatistics/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">See
+					Statistics</a></td>
+<!-- 			<td><a href='collaboratorSuggestProduct' -->
+<!-- 				th:href="@{/cHome/collaboratorSuggestProduct/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">Add -->
+<!-- 					Product</a></td> -->
+		</tr>
+	</table>
+	</body>
+</html>

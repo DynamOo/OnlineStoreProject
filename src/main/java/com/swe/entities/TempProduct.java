@@ -7,23 +7,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class TempProduct {
 	
 	@Id   
     @GeneratedValue(strategy=GenerationType.AUTO)    
-	@Column(name="productID", unique=true)
+	@Column(name="temp_product_id", unique=true)
+	private int tempProductID;
+	
 	private int productID;
 	
-	private String productName,
-		   category,
-		   productType; // normal or online
+	private String productName, category, productType, actionType;
 	
 	private int price, quantity, numOfViews, ownerID, brandID, storeID;
 	private boolean confirmed;
 	
 	private int numberOfTimesSold;
   	
-	public Product(int productID, String productName, String category, String productType, int price,
+	public TempProduct(int productID, String productName, String category, String productType, int price,
 			int quantity, int numOfViews, int ownerID, int brandID, int storeID, boolean confirmed, int numberOfTimesSold) {
 		super();
 		this.productID = productID;
@@ -38,9 +38,10 @@ public class Product {
 		this.storeID = storeID;
 		this.confirmed = confirmed;
 		this.numberOfTimesSold = numberOfTimesSold;
+		this.actionType = "";
 	}
 	
-	public Product(int productID, String productName, String category, String productType, int price,
+	public TempProduct(int productID, String productName, String category, String productType, int price,
 			int quantity, int ownerID, int brandID, int storeID) {
 		super();
 		this.productID = productID;
@@ -57,7 +58,7 @@ public class Product {
 		this.numberOfTimesSold = 0;
 	}
 	
-	public Product() {
+	public TempProduct() {
 		super();
 		this.productID = 0;
 		this.productName = "";
@@ -167,6 +168,14 @@ public class Product {
 
 	public void setNumberOfTimesSold(int numberOfTimesSold) {
 		this.numberOfTimesSold = numberOfTimesSold;
+	}
+
+	public String getActionType() {
+		return actionType;
+	}
+
+	public void setActionType(String actionType) {
+		this.actionType = actionType;
 	}
 	
 }
