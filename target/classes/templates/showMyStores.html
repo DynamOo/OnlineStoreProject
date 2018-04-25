@@ -12,25 +12,19 @@
 			<td>Store Type</td>
 			<td>Confirmed</td>
 			<td>See Statistics</td>
+			<td>See Actions</td>
 			<td>Add Collaborator</td>
 			<td>Your ID</td>                       <!-- For Debugging -->
 		</tr>
 		<tr th:each="store : ${myStores}">
-			<!-- for each loop 3adya 5als bt-loop 3la "myStores" elly mktoba hnak fe el-model  -->
 			<td th:text="${store.storeID}"></td>
 			<td th:text="${store.storeName}"></td>
 			<td th:text="${store.storeType}"></td>
 			<td th:text="${store.confirmed}"></td>
-			<td><a href='seeStatistics'
-				th:href="@{/oHome/seeStatistics/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">See
-					Statistics</a></td>
-			<td><a href='addCollaborator'
-				th:href="@{/oHome/addCollaborator/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">Add
-					Collaborator</a></td>
+			<td><a href='seeStatistics' th:href="@{/oHome/seeStatistics/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">See Statistics</a></td>
+			<td><a href='seeActions' th:href="@{/oHome/seeActions/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">See Statistics</a></td>
+			<td><a href='addCollaborator' th:href="@{/oHome/addCollaborator/{user_id}/{store_id}/(user_id=${store.ownerID}, store_id=${store.storeID})}">Add Collaborator</a></td>
 			<td th:text="${store.ownerID}"></td>
-
-			<!-- law kan 3ndy attribute array of products msln w 3aiz atb3o-->
-			<!-- <td> <p th:each="product : ${store.products}"> w ashof htkb a gwa </p></td>  -->
 		</tr>
 	</table>
 	</body>

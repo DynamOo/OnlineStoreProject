@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Store Actions</title>
+</head>
+<body>
+	<h2>Store Actions</h2>
+	<table border='1' align='center' width='60%'>
+		<tr>
+			<td>Collaborator ID</td>
+			<td>Store ID</td>
+			<td>Product ID</td>
+			<td>Action Type</td>
+			<td>Accept</td>
+			<td>Undo</td>
+		</tr>
+		<tr th:each="action : ${storeActions}">
+			<td th:text="${action.collaboratorID}"></td>
+			<td th:text="${action.storeID}"></td>
+			<td th:text="${action.productID}"></td>
+			<td th:text="${action.actionType}"></td>
+			<td><a href='acceptAction' th:href="@{/oHome/acceptAction/{user_id}/{actionId}/(actionId=${action.actionID}, user_id=${user_id})}">Accept</a></td>
+			<td><a href='undoAction' th:href="@{/oHome/undoAction/{user_id}/{actionId}/(actionId=${action.actionID}, user_id=${user_id})}">Undo</a></td>
+		</tr>
+	</table>
+</body>
+</html>
